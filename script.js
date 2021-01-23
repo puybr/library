@@ -1,11 +1,11 @@
 let myLibrary = [{
-        name: "The Lord of the Rings",
+        title: "The Lord of the Rings",
         author: "Tolkien",
         pages: 182,
         read: false
     },
     {
-        name: "Alice in Wonderland",
+        title: "Alice in Wonderland",
         author: "Lewis Caroll",
         pages: 192,
         read: true
@@ -24,13 +24,13 @@ class Book {
 };
 
 const submit = document.querySelector("button");
-submit.addEventListener('click', (e) => {
-    addBookToLibrary();
+submit.addEventListener('click', addBookToLibrary);
 
-});
-
-function addBookToLibrary() {
-    console.log('hhhh')
+function addBookToLibrary(e) {
+    console.log('Add Book');
+    const newBook = new Book('The Hobbit', 'J.R.R. Tolkien', 182, true);
+    myLibrary.push(newBook);
+    renderLibrary();
 }
 
 function renderLibrary() {
@@ -38,7 +38,7 @@ function renderLibrary() {
         const content = document.createElement('div');
         content.innerHTML = `
         <tr>
-        <td>${book.name}</td>
+        <td>${book.title}</td>
         <td>${book.author}</td>
         <td>${book.pages}</td>
         <td>${book.read}</td>
