@@ -25,13 +25,17 @@ class Book {
     };
 };
 
+const bookTitle = document.querySelector('#title');
+const bookAuthor = document.querySelector('#author');
+const bookPages = document.querySelector('#pages');
+const bookStatus = document.querySelector('#read');
 const bookTable = document.querySelector("#book-table");
 const submit = document.querySelector("button");
 submit.addEventListener('click', addBookToLibrary);
 
 function addBookToLibrary(e) {
     console.log('Add Book');
-    const newBook = new Book('The Hobbit', 'J.R.R. Tolkien', 182, true);
+    const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.value);
     myLibrary.push(newBook);
     renderLibrary();
 }
