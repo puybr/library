@@ -37,22 +37,25 @@ submitButton.addEventListener('click', addBookToLibrary);
 bookLibrary.addEventListener('click', (e) => {
     const currentTarget = e.target.parentNode.parentNode.childNodes[1];
     if (e.target.innerText === 'Del') {
-        getBook(myLibrary, currentTarget.innerText);
+        let index = getBook(myLibrary, currentTarget.innerText);
+        console.log(index);
+        deleteBook(index);
+        renderLibrary();
     };
 });
 
-function getBook(library, name) {
-    console.log(library);
-    console.log(name);
-    for (let i = 0; i<library.length; i++) {
-        if (library.title === name) {
-            return library.indexOf(i);
+// Get the matching index position in the array ...
+function getBook(libraryArray, bookName) {
+    for (book of libraryArray) {
+        if (bookName === book.title) {
+            return libraryArray.indexOf(book);
         };
     };
 };
 
-function deleteBook(currentBook) {
-    myLibrary.splice(currentBook, currentBook + 1);
+// Delete
+function deleteBook(index) {
+    myLibrary.splice(index, 1);
 };
 
 function addBookToLibrary(e) {
