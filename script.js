@@ -1,4 +1,6 @@
-let myLibrary = [{
+let myLibrary = [];
+
+let defaultLibrary = [{
         title: "The Lord of the Rings",
         author: "Tolkien",
         pages: 182,
@@ -23,6 +25,7 @@ class Book {
     };
 };
 
+const bookTable = document.querySelector("#book-table");
 const submit = document.querySelector("button");
 submit.addEventListener('click', addBookToLibrary);
 
@@ -34,9 +37,9 @@ function addBookToLibrary(e) {
 }
 
 function renderLibrary() {
+    bookTable.innerHTML = '';
     myLibrary.forEach((book) => {
-        const content = document.createElement('div');
-        content.innerHTML = `
+        const myBook  = `
         <tr>
         <td>${book.title}</td>
         <td>${book.author}</td>
@@ -44,10 +47,8 @@ function renderLibrary() {
         <td>${book.read}</td>
         </tr>
         `;
-        content.classList.add('content');
-        container.appendChild(content);
-
-    })
+        bookTable.insertAdjacentHTML("afterbegin", myBook);       
+    });
 };
 
 renderLibrary();
