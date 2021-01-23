@@ -1,28 +1,53 @@
-let myLibrary = ['The Hobbit', 'The Great Gatsby', 'Frankenstein', 'Jane Eyre'];
+let myLibrary = [{
+        name: "The Lord of the Rings",
+        author: "Tolkien",
+        pages: 182,
+        read: false
+    },
+    {
+        name: "Alice in Wonderland",
+        author: "Lewis Caroll",
+        pages: 192,
+        read: true
+    }
+];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+// BOOK CLASS
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
 
-    this.info = function () {
-        return `${title} by ${author}, ${pages} pages, read: ${read}`;
     };
 };
 
+const submit = document.querySelector("button");
+submit.addEventListener('click', (e) => {
+    addBookToLibrary();
+
+});
+
 function addBookToLibrary() {
-    // do stuff here
+    console.log('hhhh')
+}
+
+function renderLibrary() {
+    myLibrary.forEach((book) => {
+        const content = document.createElement('div');
+        content.innerHTML = `
+        <tr>
+        <td>${book.name}</td>
+        <td>${book.author}</td>
+        <td>${book.pages}</td>
+        <td>${book.read}</td>
+        </tr>
+        `;
+        content.classList.add('content');
+        container.appendChild(content);
+
+    })
 };
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 182, true);
-const books = document.getElementById('container');
-
-for(let i=0; i<myLibrary.length; i++) {
-    const content = document.createElement('div');
-    content.innerText += myLibrary[i];
-    content.classList.add('content');
-    container.appendChild(content);
-};
-
-
+renderLibrary();
