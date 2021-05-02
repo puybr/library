@@ -33,15 +33,17 @@ const bookLibrary = document.querySelector('table');
 
 submitButton.addEventListener('click', addBookToLibrary);
 
-// Listen for Del Button
+// Listen for Del Button event
 bookLibrary.addEventListener('click', (e) => {
     const currentTarget = e.target.parentNode.parentNode.childNodes[1];
     if (e.target.innerText === 'Del') {
         let index = getBook(myLibrary, currentTarget.innerText);
-        console.log(index);
         deleteBook(index);
         renderLibrary();
     };
+    if (e.target.innerHTML === 'Not Read') {
+        e.target.innerHTML = 'Read'
+    } else { e.target.innerHTML = 'Not Read' }
 });
 
 // Get the matching index position in the array ...
@@ -53,13 +55,13 @@ function getBook(libraryArray, bookName) {
     };
 };
 
-// Delete
+// Delete a Book
 function deleteBook(index) {
     myLibrary.splice(index, 1);
 };
 
+// Submit a Book Function
 function addBookToLibrary(e) {
-    console.log('Add Book');
     const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.value);
     myLibrary.push(newBook);
     renderLibrary();
