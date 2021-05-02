@@ -41,9 +41,9 @@ bookLibrary.addEventListener('click', (e) => {
         deleteBook(index);
         renderLibrary();
     };
-    if (e.target.innerHTML === 'Not Read') {
-        e.target.innerHTML = 'Read'
-    } else { e.target.innerHTML = 'Not Read' }
+    if (e.target.innerText === 'Not Read') {
+        e.target.innerText = 'Read'
+    } else { e.target.innerText = 'Not Read' }
 });
 
 // Get the matching index position in the array ...
