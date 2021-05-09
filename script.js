@@ -48,7 +48,7 @@ bookLibrary.addEventListener('click', (e) => {
 function getBook(libraryArray, bookName) {
     for (book of libraryArray) {
         if (bookName === book.title) {
-            return libraryArray.indexOf(book);
+            return libraryArray.indexOf(book);44
         };
     };
 };
@@ -69,7 +69,7 @@ function addBookToLibrary(e) {
 function renderLibrary() {
     bookTable.innerHTML = '';
     myLibrary.forEach((book) => {
-        if (book.read === true) {
+        if (book.read == true) {
             const myBook = `
             <tr>
             <td>${book.title}</td>
