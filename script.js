@@ -42,9 +42,7 @@ bookLibrary.addEventListener('click', (e) => {
         console.log(myLibrary[index].read);
         if (myLibrary[index].read === true) {
             myLibrary[index].read = false
-        } else {
-            myLibrary[index].read = true
-        }}
+        } else { myLibrary[index].read = true }};
         renderLibrary();
     if (e.target.innerText === 'Del') {
         deleteBook(index);
@@ -84,7 +82,7 @@ function renderLibrary() {
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.pages}</td>
-            <td><input type="checkbox" class="status" checked>${book.read}</td>
+            <td><input type="checkbox" class="status" checked></td>
             <td><button class="delete">Del</button></td>
             </tr>
             `;
@@ -95,7 +93,7 @@ function renderLibrary() {
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.pages}</td>
-            <td><input type="checkbox" class="status">${book.read}</td>
+            <td><input type="checkbox" class="status"></td>
             <td><button class="delete">Del</button></td>
             </tr>
             `;
