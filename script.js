@@ -2,13 +2,13 @@ let myLibrary = [{
         title: "The Lord of the Rings",
         author: "Tolkien",
         pages: 182,
-        read: "Not Read"
+        read: false
     },
     {
         title: "Alice in Wonderland",
         author: "Lewis Caroll",
         pages: 192,
-        read: "Not Read"
+        read: false
     }
 ];
 
@@ -31,6 +31,7 @@ const bookTable = document.querySelector("#book-table");
 const submitButton = document.querySelector("#submit");
 const bookLibrary = document.querySelector('table');
 
+
 submitButton.addEventListener('click', addBookToLibrary);
 
 // Listen for Del Button event
@@ -41,9 +42,6 @@ bookLibrary.addEventListener('click', (e) => {
         deleteBook(index);
         renderLibrary();
     };
-    if (e.target.innerText === 'Not Read') {
-        e.target.innerText = 'Read'
-    } else { e.target.innerText = 'Not Read' }
 });
 
 // Get the matching index position in the array ...
@@ -62,7 +60,8 @@ function deleteBook(index) {
 
 // Submit a Book Function
 function addBookToLibrary(e) {
-    const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.value);
+    const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.checked);
+    bookStatus.checked = false;
     myLibrary.push(newBook);
     renderLibrary();
 }
@@ -70,17 +69,32 @@ function addBookToLibrary(e) {
 function renderLibrary() {
     bookTable.innerHTML = '';
     myLibrary.forEach((book) => {
-        const myBook = `
-        <tr>
-        <td>${book.title}</td>
-        <td>${book.author}</td>
-        <td>${book.pages}</td>
-        <td><button class="status">${book.read}</button></td>
-        <td><button class="delete">Del</button></td>
-        </tr>
-        `;
-        bookTable.insertAdjacentHTML("afterbegin", myBook);
+        if (book.read === true) {
+            const myBook = `
+            <tr>
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.pages}</td>
+            <td><input type="checkbox" class="status" checked></td>
+            <td><button class="delete">Del</button></td>
+            </tr>
+            `;
+            bookTable.insertAdjacentHTML("afterbegin", myBook);          
+        } else {
+            const myBook = `
+            <tr>
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.pages}</td>
+            <td><input type="checkbox" class="status"></td>
+            <td><button class="delete">Del</button></td>
+            </tr>
+            `;
+            bookTable.insertAdjacentHTML("afterbegin", myBook);
+        } 
     });
 };
+
+
 
 renderLibrary();
