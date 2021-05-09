@@ -37,12 +37,21 @@ submitButton.addEventListener('click', addBookToLibrary);
 // Listen for Del Button event
 bookLibrary.addEventListener('click', (e) => {
     const currentTarget = e.target.parentNode.parentNode.childNodes[1];
+    let index = getBook(myLibrary, currentTarget.innerText);
+    if (e.target.classList.contains('status')) {
+        console.log(myLibrary[index].read);
+        if (myLibrary[index].read === true) {
+            myLibrary[index].read = false
+        } else {
+            myLibrary[index].read = true
+        }}
+        renderLibrary();
     if (e.target.innerText === 'Del') {
-        let index = getBook(myLibrary, currentTarget.innerText);
         deleteBook(index);
         renderLibrary();
     };
 });
+
 
 // Get the matching index position in the array ...
 function getBook(libraryArray, bookName) {
@@ -69,13 +78,13 @@ function addBookToLibrary(e) {
 function renderLibrary() {
     bookTable.innerHTML = '';
     myLibrary.forEach((book) => {
-        if (book.read == true) {
+        if (book.read === true) {
             const myBook = `
             <tr>
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.pages}</td>
-            <td><input type="checkbox" class="status" checked></td>
+            <td><input type="checkbox" class="status" checked>${book.read}</td>
             <td><button class="delete">Del</button></td>
             </tr>
             `;
@@ -86,7 +95,7 @@ function renderLibrary() {
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.pages}</td>
-            <td><input type="checkbox" class="status"></td>
+            <td><input type="checkbox" class="status">${book.read}</td>
             <td><button class="delete">Del</button></td>
             </tr>
             `;
@@ -94,7 +103,5 @@ function renderLibrary() {
         } 
     });
 };
-
-
 
 renderLibrary();
