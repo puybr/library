@@ -11,6 +11,14 @@
 </head>
 
 <body class="text-center">
+    <!-- H E A D I N G -->
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">My Library</h1>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">+</button>
+        </div>
+    </section>
+    <!-- F O R M -->
     <form class="form-signin">
         <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor" class="bi bi-book"
             viewBox="0 0 16 16">
@@ -37,12 +45,10 @@
 
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">+</button>
     </form>
-
     <!-- Book table goes here -->
-    <h1 class="display-1">My Library</h1>
     <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 g-4" id="book-table"></div>
-</div>
+        <div class="row row-cols-1 row-cols-md-2 g-4" id="book-table"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 
