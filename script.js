@@ -78,29 +78,36 @@ function renderLibrary() {
     myLibrary.forEach((book) => {
         if (book.read === true) {
             const myBook = `
-            <div class="col">
-            <div class="card">
+            <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+            <div class="card-body">
             <h5 class="card-title">${book.title}</h5>
-            <p class="card-text">${book.author}</p>
+            <p class="text-muted">${book.author}</p>
             <div>${book.pages}</div>
-            <div><input type="checkbox" class="status" checked></div>
-            <div><button class="delete">Del</button></div>
+            <div class="checkbox mb-3">
+            <label><input type="checkbox" value="read" class="status"> Read</label>
+            </div>           
+            <button class="btn btn-sm btn-outline-secondary" class="delete">Del</button>
+            </div>
             </div>
             </div>
             `;
             bookTable.insertAdjacentHTML("afterbegin", myBook);          
         } else {
             const myBook = `
-            <div class="col">
-            <div class="card">
+            <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+            <div class="card-body">        
             <h5 class="card-title">${book.title}</h5>
             <div class="card-body">
-            <p class="card-text">${book.author}</p>
+            <p class="text-muted">${book.author}</p>
             <i class="bi bi-book"></i>
             <div>${book.pages}</div>
-            <div><input type="checkbox" class="status"></div>
+            <div class="checkbox mb-3">
+            <label><input type="checkbox" value="read" class="status"> Read</label>
+            </div>   
+            <button class="btn btn-sm btn-outline-secondary" class="delete">Del</button>
             </div>
-            <div><button class="delete">Del</button></div>
             </div>
             </div>
             `;
