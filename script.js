@@ -74,7 +74,7 @@ function addBookToLibrary(e) {
 }
 
 function renderLibrary() {
-    bookTable.innerHTML = '';
+    bookTable.innerHTML = ``;
     myLibrary.forEach((book) => {
         if (book.read === true) {
             const myBook = `
@@ -96,6 +96,7 @@ function renderLibrary() {
             <h5 class="card-title">${book.title}</h5>
             <div class="card-body">
             <p class="card-text">${book.author}</p>
+            <i class="bi bi-book"></i>
             <div>${book.pages}</div>
             <div><input type="checkbox" class="status"></div>
             </div>
