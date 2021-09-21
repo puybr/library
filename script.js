@@ -32,7 +32,7 @@ const submitButton = document.querySelector("#submit");
 const bookLibrary = document.querySelector('table');
 
 
-submitButton.addEventListener('click', addBookToLibrary);
+// submitButton.addEventListener('click', addBookToLibrary);
 
 // Listen for Del Button event
 // bookLibrary.addEventListener('click', (e) => {
