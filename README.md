@@ -1,4 +1,4 @@
-# Library Project - [Odin Project](https://www.theodinproject.com/courses/javascript/lessons/library)
+# 📕 Library Project - [Odin Project](https://www.theodinproject.com/courses/javascript/lessons/library)
 
 ```js
 let myLibrary = ['The Hobbit', 'The Great Gatsby', 'Frankenstein', 'Jane Eyre'];
@@ -32,23 +32,14 @@ for(let i=0; i<myLibrary.length; i++) {
 ## [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
 
 ```js
-localStorage.setItem('myLibrary', '#a4509b');
+localStorage.setItem('myLibrary', JSON.stringify(myLibrary.books));
 ```
 
-> `localStorage` only supports strings. Use `JSON.stringify()` and `JSON.parse()`.
+> 💾 `localStorage` only supports strings. Use `JSON.stringify()` and `JSON.parse()`.
 
 ```js
 let myLibrary = [];
-let myLibrary[0] = prompt('Add a new book');
-localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
-
-//...
-let bookLibrary = JSON.parse(localStorage.getItem("myLibrary"));
-// use direct access to set/get item:
-localstorage.myLibrary = JSON.stringify(myLibrary);
-let bookLibrary = JSON.parse(localStorage.myLibrary);
-
-
+localStorage.setItem('myLibrary', JSON.stringify(myLibrary.books));
 
 // Local Storage
 function saveLocal() {
@@ -63,6 +54,13 @@ function restoreLocal() {
     myLibrary.books = [];
   };
 };
+
+//...
+let bookLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+// use direct access to set/get item:
+localstorage.myLibrary = JSON.stringify(myLibrary);
+let bookLibrary = JSON.parse(localStorage.myLibrary);
+
 ```
 
 _ _ _
