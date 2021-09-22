@@ -52,11 +52,21 @@ const bookAuthor = document.querySelector('#author');
 const bookPages = document.querySelector('#pages');
 const bookStatus = document.querySelector('#read');
 const bookTable = document.querySelector("#book-table");
-const submitButton = document.querySelector("#submit");
+const addLibraryBook = document.querySelector("#submit");
+const openFormButton = document.querySelector('#openFormButton');
 const bookLibrary = document.querySelector('table');
 
 
-submitButton.addEventListener('click', addBookToLibrary);
+addLibraryBook.addEventListener('click', addBookToLibrary);
+openFormButton.addEventListener('click', openBookForm);
+
+function openBookForm(e) {
+    e.preventDefault();
+    document.getElementById('myLibraryForm').style.display = 'block';
+    document.getElementById('myLibraryHeader').style.display = 'none';
+    document.getElementById('myLibraryGrid').style.display = 'none';
+
+};
 
 // Listen for Del Button event
 // bookLibrary.addEventListener('click', (e) => {
@@ -76,13 +86,13 @@ submitButton.addEventListener('click', addBookToLibrary);
 
 
 // Get the matching index position in the array ...
-function getBook(libraryArray, bookName) {
-    for (book of libraryArray) {
-        if (bookName === book.title) {
-            return libraryArray.indexOf(book);44
-        };
-    };
-};
+// function getBook(libraryArray, bookName) {
+//     for (book of libraryArray) {
+//         if (bookName === book.title) {
+//             return libraryArray.indexOf(book);
+//         };
+//     };
+// };
 
 // Delete a Book
 function deleteBook(index) {
@@ -91,15 +101,18 @@ function deleteBook(index) {
 
 // Submit a Book Function
 function addBookToLibrary(e) {
+    e.preventDefault();
     const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.checked);
     bookStatus.checked = false;
     myLibrary.push(newBook);
     renderLibrary();
-}
+    document.getElementById('myLibraryHeader').style.display = 'block';
+    document.getElementById('myLibraryGrid').style.display = 'block';
+};
 
 function renderLibrary() {
     bookTable.innerHTML = ``;
-    document.getElementById('form').style.display = 'none';
+    document.getElementById('myLibraryForm').style.display = 'none';
     myLibrary.forEach((book) => {
         if (book.read === true) {
             const myBook = `
@@ -112,7 +125,7 @@ function renderLibrary() {
             <i class="bi bi-book"></i>
             <p class="text-muted">Pages: ${book.pages}</p>
             <div class="checkbox mb-3">
-            <label><input checked type="checkbox" value="read" class="status"> Read</label>
+            <label><input checked type="checkbox" value="read" class="status" id="read"> Read</label>
             </div>   
             <button class="btn btn-sm btn-outline-secondary" class="delete">Delete</button>
             </div>
@@ -131,7 +144,7 @@ function renderLibrary() {
             <i class="bi bi-book"></i>
             <p class="text-muted">Pages: ${book.pages}</p>
             <div class="checkbox mb-3">
-            <label><input type="checkbox" value="read" class="status"> Read</label>
+            <label><input type="checkbox" value="read" class="status" id="read"> Read</label>
             </div>   
             <button class="btn btn-sm btn-outline-secondary" class="delete">Delete</button>
             </div>
@@ -139,7 +152,7 @@ function renderLibrary() {
             </div>
             `;
             bookTable.insertAdjacentHTML("afterbegin", myBook);
-        } 
+        }; 
     });
 };
 
