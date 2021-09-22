@@ -28,26 +28,43 @@ for(let i=0; i<myLibrary.length; i++) {
     container.appendChild(content);
 };
 ```
-Styled with **[Bootstrap](https://getbootstrap.com/)** 🥰
 
 ## [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
 
 ```js
-localStorage.colorSetting = '#a4509b';
-localStorage['colorSetting'] = '#a4509b';
-localStorage.setItem('colorSetting', '#a4509b');
+localStorage.setItem('myLibrary', '#a4509b');
 ```
 
-`localStorage` only supports strings. Use `JSON.stringify()` and `JSON.parse()`.
+> `localStorage` only supports strings. Use `JSON.stringify()` and `JSON.parse()`.
 
 ```js
 let myLibrary = [];
-let myLibrary[0] = prompt("Add a new book");
-localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+let myLibrary[0] = prompt('Add a new book');
+localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 
 //...
 let bookLibrary = JSON.parse(localStorage.getItem("myLibrary"));
 // use direct access to set/get item:
 localstorage.myLibrary = JSON.stringify(myLibrary);
 let bookLibrary = JSON.parse(localStorage.myLibrary);
+
+
+
+// Local Storage
+function saveLocal() {
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary.books));
+};
+
+function restoreLocal() {
+  const books = JSON.parse(localStorage.getItem('myLibrary'))
+  if (books) {
+    myLibrary.books = books.map((book) => JSONToBook(book));
+  } else {
+    myLibrary.books = [];
+  };
+};
 ```
+
+_ _ _
+
+Styled with **[Bootstrap](https://getbootstrap.com/)** 🥰
