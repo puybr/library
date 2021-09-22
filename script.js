@@ -52,8 +52,8 @@ const bookAuthor = document.querySelector('#author');
 const bookPages = document.querySelector('#pages');
 const bookStatus = document.querySelector('#read');
 const bookTable = document.querySelector("#book-table");
-const bookLibrary = document.querySelector("#book-table");
 const addLibraryBook = document.querySelector("#submit");
+const bookLibrary = document.querySelector('#myLibraryGrid')
 const openFormButton = document.querySelector('#openFormButton');
 
 
@@ -67,37 +67,6 @@ function openBookForm(e) {
     document.getElementById('myLibraryHeader').style.display = 'none';
     document.getElementById('myLibraryGrid').style.display = 'none';
 
-};
-
-// Listen for Del Button event
-// bookLibrary.addEventListener('click', (e) => {
-//     const currentTarget = e.target.parentNode.parentNode.childNodes[1];
-//     let index = getBook(myLibrary, currentTarget.innerText);
-//     if (e.target.classList.contains('status')) {
-//         console.log(myLibrary[index].read);
-//         if (myLibrary[index].read === true) {
-//             myLibrary[index].read = false
-//         } else { myLibrary[index].read = true }};
-//         renderLibrary();
-//     if (e.target.innerText === 'Del') {
-//         deleteBook(index);
-//         renderLibrary();
-//     };
-// });
-
-
-// Get the matching index position in the array ...
-// function getBook(libraryArray, bookName) {
-//     for (book of libraryArray) {
-//         if (bookName === book.title) {
-//             return libraryArray.indexOf(book);
-//         };
-//     };
-// };
-
-// Delete a Book
-function deleteBook(index) {
-    myLibrary.splice(index, 1);
 };
 
 // Add a Book to Library Function
@@ -161,3 +130,37 @@ function renderLibrary() {
 };
 
 renderLibrary();
+
+
+// Listen for Del Button event
+bookLibrary.addEventListener('click', (e) => {
+    e.preventDefault();
+    const currentTarget = e.target.parentNode.parentNode.childNodes[1];
+    console.log(currentTarget)
+    let index = getBook(myLibrary, currentTarget.innerText);
+    if (e.target.classList.contains('status')) {
+        console.log(myLibrary[index].read);
+        if (myLibrary[index].read === true) {
+            myLibrary[index].read = false
+        } else { myLibrary[index].read = true }};
+        renderLibrary();
+    if (e.target.innerText === 'Delete') {
+        deleteBook(index);
+        renderLibrary();
+    };
+});
+
+
+// Get the matching index position in the array ...
+function getBook(libraryArray, bookName) {
+    for (book of libraryArray) {
+        if (bookName === book.title) {
+            return libraryArray.indexOf(book);
+        };
+    };
+};
+
+// Delete a Book
+function deleteBook(index) {
+    myLibrary.splice(index, 1);
+};
