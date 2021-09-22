@@ -1,16 +1,40 @@
 let myLibrary = [{
         title: "The Lord of the Rings",
-        author: "Tolkien",
-        pages: 182,
+        author: "J. R. R. Tolkien",
+        pages: 1137,
         read: false
     },
     {
         title: "Alice in Wonderland",
         author: "Lewis Caroll",
-        pages: 192,
+        pages: 312,
+        read: true
+    },
+    {
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        pages: 180,
         read: false
+    },
+    {
+        title: "Slaughterhouse-Five",
+        author: "Kurt Vonnegut",
+        pages: 154,
+        read: false
+    },
+    {
+        title: "The Naked Lunch",
+        author: "William S. Burroughs",
+        pages: 112,
+        read: false
+    },
+    {
+        title: "The Catcher in the Rye",
+        author: "J. D. Salinger",
+        pages: 240,
+        read: true
     }
-];
+];//dummy data
 
 // BOOK CLASS
 class Book {
@@ -75,19 +99,22 @@ function addBookToLibrary(e) {
 
 function renderLibrary() {
     bookTable.innerHTML = ``;
+    document.getElementById('form').style.display = 'none';
     myLibrary.forEach((book) => {
         if (book.read === true) {
             const myBook = `
             <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-            <div class="card-body">
+            <div class="card-body">        
             <h5 class="card-title">${book.title}</h5>
+            <div class="card-body">
             <p class="text-muted">${book.author}</p>
-            <div>${book.pages}</div>
+            <i class="bi bi-book"></i>
+            <p class="text-muted">Pages: ${book.pages}</p>
             <div class="checkbox mb-3">
-            <label><input type="checkbox" value="read" class="status"> Read</label>
-            </div>           
-            <button class="btn btn-sm btn-outline-secondary" class="delete">Del</button>
+            <label><input checked type="checkbox" value="read" class="status"> Read</label>
+            </div>   
+            <button class="btn btn-sm btn-outline-secondary" class="delete">Delete</button>
             </div>
             </div>
             </div>
@@ -102,11 +129,11 @@ function renderLibrary() {
             <div class="card-body">
             <p class="text-muted">${book.author}</p>
             <i class="bi bi-book"></i>
-            <div>${book.pages}</div>
+            <p class="text-muted">Pages: ${book.pages}</p>
             <div class="checkbox mb-3">
             <label><input type="checkbox" value="read" class="status"> Read</label>
             </div>   
-            <button class="btn btn-sm btn-outline-secondary" class="delete">Del</button>
+            <button class="btn btn-sm btn-outline-secondary" class="delete">Delete</button>
             </div>
             </div>
             </div>
