@@ -144,6 +144,7 @@ bookLibrary.addEventListener('click', (e) => {
         } else {
             myLibrary[statusIndex].read = true; 
         };
+        renderLibrary();
     };
     // Listen for Delete Button event
     if (e.target.innerText === 'Delete') {
