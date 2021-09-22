@@ -52,9 +52,10 @@ const bookAuthor = document.querySelector('#author');
 const bookPages = document.querySelector('#pages');
 const bookStatus = document.querySelector('#read');
 const bookTable = document.querySelector("#book-table");
+const bookLibrary = document.querySelector("#book-table");
 const addLibraryBook = document.querySelector("#submit");
 const openFormButton = document.querySelector('#openFormButton');
-const bookLibrary = document.querySelector('table');
+
 
 
 addLibraryBook.addEventListener('click', addBookToLibrary);
@@ -99,10 +100,13 @@ function deleteBook(index) {
     myLibrary.splice(index, 1);
 };
 
-// Submit a Book Function
+// Add a Book to Library Function
 function addBookToLibrary(e) {
     e.preventDefault();
     const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.checked);
+    bookTitle.value = '';
+    bookAuthor.value = '';
+    bookPages.value = '';
     bookStatus.checked = false;
     myLibrary.push(newBook);
     renderLibrary();
