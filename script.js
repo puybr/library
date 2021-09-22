@@ -132,26 +132,30 @@ function renderLibrary() {
 renderLibrary();
 
 
-// Listen for Del Button event
 bookLibrary.addEventListener('click', (e) => {
     e.preventDefault();
-    const currentTarget = e.target.parentNode.parentNode.childNodes[1];
-    console.log(currentTarget)
-    let index = getBook(myLibrary, currentTarget.innerText);
+    // Listen for read status change
     if (e.target.classList.contains('status')) {
-        console.log(myLibrary[index].read);
-        if (myLibrary[index].read === true) {
-            myLibrary[index].read = false
-        } else { myLibrary[index].read = true }};
-        renderLibrary();
+        const statusTargetName = e.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].innerText;
+        const statusIndex = getBook(myLibrary, statusTargetName);
+        console.log(myLibrary[statusIndex].read);
+        if (myLibrary[statusIndex].read === true) {
+            myLibrary[statusIndex].read = false;
+        } else {
+            myLibrary[statusIndex].read = true; 
+        };
+    };
+    // Listen for Delete Button event
     if (e.target.innerText === 'Delete') {
-        deleteBook(index);
+        const deleteTargetName = e.target.parentNode.parentNode.childNodes[1].innerText;
+        let deleteIndex = getBook(myLibrary, deleteTargetName);
+        deleteBook(deleteIndex);
         renderLibrary();
     };
 });
 
 
-// Get the matching index position in the array ...
+// returns the matching index position in the array ...
 function getBook(libraryArray, bookName) {
     for (book of libraryArray) {
         if (bookName === book.title) {
@@ -160,7 +164,7 @@ function getBook(libraryArray, bookName) {
     };
 };
 
-// Delete a Book
+// delete a Book
 function deleteBook(index) {
     myLibrary.splice(index, 1);
 };
