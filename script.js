@@ -86,6 +86,8 @@ function addBookToLibrary(e) {
 function renderLibrary() {
     bookTable.innerHTML = ``;
     document.getElementById('myLibraryForm').style.display = 'none';
+    document.getElementById('myLibraryHeader').style.display = 'block';
+    document.getElementById('myLibraryGrid').style.display = 'block';
     myLibrary.forEach((book) => {
         if (book.read === true) {
             const myBook = `
