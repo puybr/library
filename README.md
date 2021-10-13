@@ -1,6 +1,6 @@
 # Library Project - [Odin Project](https://www.theodinproject.com/courses/javascript/lessons/library)
 
-📕📕📕[Demo here]📕📕📕
+📕📕📕[Demo here](https://ghost-goblin.github.io/library/)📕📕📕
 
 ## [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
 
