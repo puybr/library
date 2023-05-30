@@ -12,7 +12,7 @@ localStorage.setItem('myLibrary', JSON.stringify(myLibrary.books));
 
 ```js
 let myLibrary = [];
-localStorage.setItem('myLibrary', JSON.stringify(myLibrary.books));
+localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 
 // Local Storage
 function saveLocal() {

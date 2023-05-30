@@ -16,6 +16,7 @@
         <div class="container">
             <h1 class="jumbotron-heading">My Library</h1>
             <button class="btn btn-lg btn-primary btn-block" type="submit" id="openFormButton">+</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" id="resetFormButton">Reset</button>
         </div>
     </section>
     <!-- F O R M -->
@@ -28,13 +29,16 @@
         <h1 class="h3 mb-3 font-weight-normal">Add a Book</h1>
 
         <label for="title">Title</label>
-        <input type="text" id="title" class="form-control" placeholder="Title" required autofocus>
+        <input type="text" id="title" class="form-control" placeholder="Title" name="title" required autofocus>
+        <p>Title must contain between 5 + characters</p>
 
         <label for="author">Author</label>
-        <input type="text" id="author" class="form-control" placeholder="Author" required>
+        <input type="text" id="author" class="form-control" placeholder="Author" name="author" required>
+        <p>Author must contain between 5 + characters</p>
 
         <label for="pages">Pages</label>
-        <input type="number" id="pages" class="form-control" placeholder="Pages" required>
+        <input type="number" id="pages" class="form-control" placeholder="Pages" name="pages" required>
+        <p>Pages must have digits</p>
 
 
         <div class="checkbox mb-3">
@@ -44,6 +48,7 @@
         </div>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">+</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="cancel">Cancel</button>
     </form>
     <!-- Book table goes here -->
     <div class="container" id="myLibraryGrid">
