@@ -113,7 +113,7 @@ function restoreLocal() {
 openFormButton.addEventListener('click', openBookForm);
 resetFormButton.addEventListener('click', clearLocal);
 cancelForm.addEventListener('click', cancelBook);
-addLibraryBook.addEventListener('click', addBookToLibrary);
+
 function cancelBook() {
     document.getElementById('myLibraryForm').style.display = 'none';
     document.getElementById('myLibraryHeader').style.display = 'block';
@@ -123,6 +123,7 @@ function cancelBook() {
 
 function openBookForm(e) {
     e.preventDefault();
+    addLibraryBook.removeEventListener('click', addBookToLibrary)
     document.getElementById('myLibraryForm').style.display = 'block';
     document.getElementById('myLibraryHeader').style.display = 'none';
     document.getElementById('myLibraryGrid').style.display = 'none';
@@ -138,21 +139,25 @@ const patterns = {
 
 inputs.forEach((input) => {
     input.addEventListener('keyup', (event) => {
-        console.log(event.target.attributes.name.value);
+        // console.log(event.target.attributes.name.value);
         validate(event.target, patterns[event.target.name]); // parameters of the validate function
-    });
+    })
 });
 
 // Validation Function 
 function validate(field,regex) {
+    addLibraryBook.addEventListener('click', addBookToLibrary)
     if (regex.test(field.value)) { // test() method tests for a match in a string
         field.className = 'valid'; // add a new css class
+        document.querySelector('#myLibraryForm').className = 'valid';
     } else {
         field.className = 'invalid';
+        document.querySelector('#myLibraryForm').className = 'invalid';
 
     }
 }
 
+  
 
 // Add a Book to Library Function
 function addBookToLibrary(e) {
