@@ -49,6 +49,7 @@ class Book {
 
 
 function clearLocal() {
+    let myLibrary;
     localStorage.clear();
     restoreLocal();
     renderLibrary();
@@ -231,4 +232,4 @@ function deleteBook(index) {
 
 };
 
-clearLocal();
+restoreLocal();
