@@ -50,6 +50,7 @@ class Book {
 
 function clearLocal() {
     localStorage.clear();
+    myLibrary = [];
     restoreLocal();
     renderLibrary();
 }
