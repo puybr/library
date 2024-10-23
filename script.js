@@ -268,5 +268,6 @@ function deleteBook(index) {
 
 };
 
+// render library and local storage
 renderLibrary();
 restoreLocal();
