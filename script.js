@@ -232,5 +232,5 @@ function deleteBook(index) {
 
 };
 
-renderLibrary();
 restoreLocal();
+renderLibrary();
