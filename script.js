@@ -1,3 +1,7 @@
+window.onload = function() {
+       restoreLocal();
+}
+
 let myLibrary = [{
         title: "The Lord of the Rings",
         author: "J. R. R. Tolkien",
