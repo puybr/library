@@ -1,5 +1,6 @@
 window.onload = function() {
        restoreLocal();
+       renderLibrary();
 }
 
 let myLibrary = [{
