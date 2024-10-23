@@ -1,3 +1,4 @@
+// Load local storage
 window.onload = function() {
        restoreLocal();
        renderLibrary();
