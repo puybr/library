@@ -1,7 +1,3 @@
-// Load local storage
-restoreLocal();
-renderLibrary();
-
 let myLibrary = [{
         title: "The Lord of the Rings",
         author: "J. R. R. Tolkien",
@@ -270,3 +266,6 @@ function getBook(libraryArray, bookName) {
 function deleteBook(index) {
     myLibrary.splice(index, 1);
 };
+
+restoreLocal();
+renderLibrary();
