@@ -233,3 +233,4 @@ function deleteBook(index) {
 };
 
 restoreLocal();
+renderLibrary();
