@@ -50,43 +50,6 @@ class Book {
 
 function clearLocal() {
     localStorage.clear();
-    myLibrary = [{
-        title: "The Lord of the Rings",
-        author: "J. R. R. Tolkien",
-        pages: 1137,
-        read: false
-    },
-    {
-        title: "Alice in Wonderland",
-        author: "Lewis Caroll",
-        pages: 312,
-        read: true
-    },
-    {
-        title: "The Great Gatsby",
-        author: "F. Scott Fitzgerald",
-        pages: 180,
-        read: false
-    },
-    {
-        title: "Slaughterhouse-Five",
-        author: "Kurt Vonnegut",
-        pages: 154,
-        read: false
-    },
-    {
-        title: "The Naked Lunch",
-        author: "William S. Burroughs",
-        pages: 112,
-        read: false
-    },
-    {
-        title: "The Catcher in the Rye",
-        author: "J. D. Salinger",
-        pages: 240,
-        read: true
-    }
-];//dummy data
     restoreLocal();
     renderLibrary();
 }
