@@ -1,8 +1,6 @@
 // Load local storage
-window.onload = function() {
-       restoreLocal();
-       renderLibrary();
-}
+restoreLocal();
+renderLibrary();
 
 let myLibrary = [{
         title: "The Lord of the Rings",
@@ -271,9 +269,4 @@ function getBook(libraryArray, bookName) {
 // delete a Book
 function deleteBook(index) {
     myLibrary.splice(index, 1);
-
 };
-
-// render library and local storage
-renderLibrary();
-restoreLocal();
