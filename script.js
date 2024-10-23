@@ -47,9 +47,6 @@ class Book {
     };
 };
 
-function restoreLocal(myLibrary) {
-    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
-  };
 
 function clearLocal() {
     localStorage.clear();
@@ -90,7 +87,7 @@ function clearLocal() {
         read: true
     }
 ];//dummy data
-    restoreLocal(myLibrary);
+    restoreLocal();
     renderLibrary();
 }
   
@@ -106,6 +103,11 @@ const openFormButton = document.querySelector('#openFormButton');
 const resetFormButton = document.querySelector('#resetFormButton');
 const cancelForm = document.querySelector('#cancel');
 const inputs = document.querySelectorAll('input');
+
+
+function restoreLocal() {
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+  };
 
 
 openFormButton.addEventListener('click', openBookForm);
@@ -166,7 +168,7 @@ function addBookToLibrary(e) {
     bookPages.value = '';
     bookStatus.checked = false;
     myLibrary.push(newBook);
-    restoreLocal(myLibrary);
+    restoreLocal();
     renderLibrary();
     document.getElementById('myLibraryHeader').style.display = 'block';
     document.getElementById('myLibraryGrid').style.display = 'block';
@@ -236,7 +238,7 @@ bookLibrary.addEventListener('click', (e) => {
         } else {
             myLibrary[statusIndex].read = true; 
         };
-        restoreLocal(myLibrary);
+        restoreLocal();
         renderLibrary();
     };
     // Listen for Delete Button event
@@ -244,7 +246,7 @@ bookLibrary.addEventListener('click', (e) => {
         const deleteTargetName = e.target.parentNode.parentNode.childNodes[1].innerText;
         let deleteIndex = getBook(myLibrary, deleteTargetName);
         deleteBook(deleteIndex);
-        restoreLocal(myLibrary);
+        restoreLocal();
         renderLibrary();
 
     };
@@ -265,5 +267,4 @@ function deleteBook(index) {
     myLibrary.splice(index, 1);
 };
 
-restoreLocal(myLibrary);
 renderLibrary();
