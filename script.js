@@ -34,6 +34,8 @@ let myLibrary = [{
         pages: 240,
         read: true
     }
+    restoreLocal();
+    renderLibrary();
 ];//dummy data
 
 // BOOK CLASS
@@ -266,5 +268,3 @@ function getBook(libraryArray, bookName) {
 function deleteBook(index) {
     myLibrary.splice(index, 1);
 };
-
-renderLibrary();
