@@ -253,7 +253,7 @@ bookLibrary.addEventListener('click', (e) => {
 // returns the matching index position in the array ...
 function getBook(libraryArray, bookName) {
     console.log(libraryArray);
-    for (book of libraryArray) {
+    for (let book of libraryArray) {
         console.log(book);
         if (bookName === book.title) {
             return libraryArray.indexOf(book);
@@ -266,5 +266,4 @@ function deleteBook(index) {
     myLibrary.splice(index, 1);
 };
 
-restoreLocal();
 renderLibrary();
