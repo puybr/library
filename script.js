@@ -91,7 +91,7 @@ function clearLocal() {
 ];//dummy data
     restoreLocal();
     renderLibrary();
-}
+};
   
 
 const bookTitle = document.querySelector('#title');
@@ -120,8 +120,7 @@ function cancelBook() {
     document.getElementById('myLibraryForm').style.display = 'none';
     document.getElementById('myLibraryHeader').style.display = 'block';
     document.getElementById('myLibraryGrid').style.display = 'block';
-
-}
+};
 
 function openBookForm(e) {
     e.preventDefault();
@@ -143,7 +142,7 @@ inputs.forEach((input) => {
     input.addEventListener('keyup', (event) => {
         // console.log(event.target.attributes.name.value);
         validate(event.target, patterns[event.target.name]); // parameters of the validate function
-    })
+    });
 });
 
 // Validation Function 
@@ -155,11 +154,8 @@ function validate(field,regex) {
     } else {
         field.className = 'invalid';
         document.querySelector('#myLibraryForm').className = 'invalid';
-
-    }
-}
-
-  
+    };
+};  
 
 // Add a Book to Library Function
 function addBookToLibrary(e) {
@@ -230,6 +226,7 @@ function renderLibrary() {
 
 bookLibrary.addEventListener('click', (e) => {
     e.preventDefault();
+    myLibrary = JSON.parse(localStorage.getItem('myLibrary'))
     // Listen for read status change
     if (e.target.classList.contains('status')) {
         const statusTargetName = e.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].innerText;
