@@ -254,6 +254,7 @@ bookLibrary.addEventListener('click', (e) => {
 function getBook(libraryArray, bookName) {
     console.log(libraryArray);
     for (book of libraryArray) {
+        console.log(book);
         if (bookName === book.title) {
             return libraryArray.indexOf(book);
         };
