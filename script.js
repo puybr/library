@@ -228,7 +228,7 @@ bookLibrary.addEventListener('click', (e) => {
     // Listen for read status change
     if (e.target.classList.contains('status')) {
         const statusTargetName = e.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].innerText;
-        let myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+        myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
         const statusIndex = getBook(myLibrary, statusTargetName);
         console.log(myLibrary[statusIndex].read);
         if (myLibrary[statusIndex].read === true) {
