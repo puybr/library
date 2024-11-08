@@ -1,3 +1,5 @@
+"use strict";
+
 let myLibrary = [{
         title: "The Lord of the Rings",
         author: "J. R. R. Tolkien",
