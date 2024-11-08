@@ -266,4 +266,5 @@ function deleteBook(index) {
     myLibrary.splice(index, 1);
 };
 
+restoreLocal();
 renderLibrary();
