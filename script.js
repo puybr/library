@@ -178,7 +178,7 @@ function renderLibrary() {
     document.getElementById('myLibraryForm').style.display = 'none';
     document.getElementById('myLibraryHeader').style.display = 'block';
     document.getElementById('myLibraryGrid').style.display = 'block';
-    myLibrary = JSON.parse(localStorage.getItem('myLibrary'))
+    myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
     myLibrary.forEach((book) => {
         if (book.read === true) {
             const myBook = `
@@ -198,8 +198,7 @@ function renderLibrary() {
             </div>
             </div>
             `;
-            bookTable.insertAdjacentHTML("afterbegin", myBook);
-                    
+            bookTable.insertAdjacentHTML("afterbegin", myBook);                    
         } else {
             const myBook = `
             <div class="col-md-4">
@@ -229,6 +228,7 @@ bookLibrary.addEventListener('click', (e) => {
     // Listen for read status change
     if (e.target.classList.contains('status')) {
         const statusTargetName = e.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].innerText;
+        let myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
         const statusIndex = getBook(myLibrary, statusTargetName);
         console.log(myLibrary[statusIndex].read);
         if (myLibrary[statusIndex].read === true) {
@@ -246,7 +246,6 @@ bookLibrary.addEventListener('click', (e) => {
         deleteBook(deleteIndex);
         restoreLocal();
         renderLibrary();
-
     };
 });
 
