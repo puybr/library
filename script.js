@@ -178,7 +178,12 @@ function renderLibrary() {
     document.getElementById('myLibraryForm').style.display = 'none';
     document.getElementById('myLibraryHeader').style.display = 'block';
     document.getElementById('myLibraryGrid').style.display = 'block';
-    myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+    // Check local storage
+    if (localStorage.getItem('myLibrary')) {
+     myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+    } else {
+    myLibrary = myLibrary;
+    };
     myLibrary.forEach((book) => {
         if (book.read === true) {
             const myBook = `
