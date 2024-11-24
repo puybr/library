@@ -45,55 +45,28 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.read = read;
-
     };
 };
 
-
 function clearLocal() {
     localStorage.clear();
-    myLibrary = [{
-        title: "The Lord of the Rings",
-        author: "J. R. R. Tolkien",
-        pages: 1137,
-        read: false
-    },
-    {
-        title: "Alice in Wonderland",
-        author: "Lewis Caroll",
-        pages: 312,
-        read: true
-    },
-    {
-        title: "The Great Gatsby",
-        author: "F. Scott Fitzgerald",
-        pages: 180,
-        read: false
-    },
-    {
-        title: "Slaughterhouse-Five",
-        author: "Kurt Vonnegut",
-        pages: 154,
-        read: false
-    },
-    {
-        title: "The Naked Lunch",
-        author: "William S. Burroughs",
-        pages: 112,
-        read: false
-    },
-    {
-        title: "The Catcher in the Rye",
-        author: "J. D. Salinger",
-        pages: 240,
-        read: true
-    }
-];//dummy data
+    myLibrary = [];
+    const lotr = new Book("The Lord of the Rings", "J. R. R. Tolkien", 1137, false);
+    const aiwl = new Book("Alice in Wonderland", "Lewis Caroll", 312, true);
+    const tgg = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180, false);
+    const sf = new Book("Slaughterhouse-Five", "Kurt Vonnegut", 154, false);
+    const tnl = new Book("The Naked Lunch", "William S. Burroughs", 112, false);
+    const tcitr = new Book("The Catcher in the Rye", "J. D. Salinger", 240, true);
+    myLibrary.push(lotr);
+    myLibrary.push(aiwl);
+    myLibrary.push(tgg);
+    myLibrary.push(sf);
+    myLibrary.push(tnl);
+    myLibrary.push(tcitr);
     restoreLocal();
     renderLibrary();
 };
   
-
 const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const bookPages = document.querySelector('#pages');
@@ -106,11 +79,9 @@ const resetFormButton = document.querySelector('#resetFormButton');
 const cancelForm = document.querySelector('#cancel');
 const inputs = document.querySelectorAll('input');
 
-
 function restoreLocal() {
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
   };
-
 
 openFormButton.addEventListener('click', openBookForm);
 resetFormButton.addEventListener('click', clearLocal);
@@ -128,7 +99,6 @@ function openBookForm(e) {
     document.getElementById('myLibraryForm').style.display = 'block';
     document.getElementById('myLibraryHeader').style.display = 'none';
     document.getElementById('myLibraryGrid').style.display = 'none';
-
 };
 
 // RegEx Patterns
@@ -171,7 +141,6 @@ function addBookToLibrary(e) {
     document.getElementById('myLibraryHeader').style.display = 'block';
     document.getElementById('myLibraryGrid').style.display = 'block';
 };
-
 
 function renderLibrary() {
     bookTable.innerHTML = ``;
@@ -227,7 +196,6 @@ function renderLibrary() {
     });
 };
 
-
 bookLibrary.addEventListener('click', (e) => {
     e.preventDefault();
     // Listen for read status change
@@ -253,7 +221,6 @@ bookLibrary.addEventListener('click', (e) => {
     };
 });
 
-
 // returns the matching index position in the array ...
 function getBook(libraryArray, bookName) {
     console.log(libraryArray);
@@ -269,6 +236,5 @@ function getBook(libraryArray, bookName) {
 function deleteBook(index) {
     myLibrary.splice(index, 1);
 };
-
 
 renderLibrary();
